@@ -157,7 +157,7 @@
 - **Weather**  
 - **Your Phone**  
 
-![Экранный снимок](image.png)
+![скрин](image.png)
 
 ---
 
