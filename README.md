@@ -4,6 +4,7 @@
 
 ## Содержание
 
+- [Версии](#Версии)
 - [Общие настройки](#Общие-настройки)
 - [Настройки системы](#Настройки-системы)
 - [Настройки проводника](#Настройки-проводника)
@@ -12,6 +13,23 @@
 - [Скрипты](#Скрипты)
 - [Примечания](#Примечания)
 - [TODO](#TODO)
+
+---
+
+## Версия для VirtualBox
+
+Находится в папке virtualbox и содержит в себе следующие дополнительные опции:
+
+- **Virtual machine support**: **Install Oracle VirtualBox Guest Additions**
+
+- **Partitioning and formatting**: **Let Windows Setup wipe, partition and format your hard drive (more specifically, disk 0) using these settings**
+  - Все подпункты в этой опции оставлены по умолчанию
+
+Скрипт для создания виртуалки в той же папке, надо только поменять переменные и пути на свои и запустить. Создастся виртуалка со всеми нужными штуками для virtualbox.
+
+Имейте в виду, что он сначала удалит предыдущую версию виртуалки под именем указаном в скрипте.
+
+---
 
 ## Общие настройки
 
@@ -39,6 +57,15 @@
 - **Политика блокировки учетной записи**: Используется стандартная политика.
 
 ---
+
+## Персонализация
+
+- Desktop wallpaper: я ставлю свои обои крутые следующим скриптом (просто тестирую функцию)
+
+```
+$url = 'https://images.wallpapersden.com/image/download/windows-11-4k-glowing_bWtoamaUmZqaraWkpJRobWllrWdpZWU.jpg';
+return ( Invoke-WebRequest -Uri $url -UseBasicParsing -TimeoutSec 30 ).Content;
+```
 
 ## Настройки системы
 
@@ -185,10 +212,12 @@ Windows Registry Editor Version 5.00
 [HKEY_USERS\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "UseCompactMode"=dword:00000001
 
-[HKEY_CURRENT_USER\Control Panel\Keyboard]
+[HKEY_USERS\DefaultUser\Control Panel\Keyboard]
 "KeyboardDelay"="0"
 "KeyboardSpeed"="31"
 ```
+
+Важно чтобы реестровые параметры применялись к `HKEY_USERS\DefaultUser\` потому что на это смотрит винда чтобы создать пользователя
 
 ---
 
